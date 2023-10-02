@@ -18,7 +18,18 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  colorscheme = "poimandres",
+
+  
+  plugins = {
+    { 
+       "olivercederborg/poimandres.nvim",
+       name = "poimandres",
+      config = function()
+      require("poimandres").setup {}
+      end
+    }
+  },
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
