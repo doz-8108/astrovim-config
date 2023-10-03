@@ -1,3 +1,6 @@
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -92,5 +95,12 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+   autocmd("VimLeave", {
+     desc = "Restore cursor style on terminal",
+     group = augroup("RestoreCursorShapeOnExit", { clear = true }),
+     callback = function()
+       vim.cmd("set guicursor=a:ver2")
+     end
+   })
   end,
 }
