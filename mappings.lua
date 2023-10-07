@@ -18,6 +18,18 @@ return {
     --   desc = "Previous buffer",
     -- },
 
+    -- trouble 
+    ["<leader>xx"] = {
+      function ()
+        require("trouble").open()
+      end
+    },
+    ["<leader>xq"] = {
+      function ()
+        require("trouble").open("quickfix")
+      end
+    },
+
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
       function()
