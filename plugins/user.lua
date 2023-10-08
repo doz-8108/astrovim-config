@@ -11,7 +11,12 @@ return {
       -- },
       {
             "nvim-telescope/telescope.nvim",
-            dependencies = {"nvim-telescope/telescope-live-grep-args.nvim", "nvim-telescope/telescope-media-files.nvim"},
+            dependencies = {
+                  "nvim-lua/popup.nvim",
+                  "nvim-lua/plenary.nvim",
+                  "nvim-telescope/telescope-live-grep-args.nvim",
+                  "nvim-telescope/telescope-media-files.nvim"
+            },
             -- the first parameter is the plugin specification
             -- the second is the table of options as set up in Lazy with the `opts` key
             config = function(plugin, opts)
@@ -20,6 +25,22 @@ return {
 
                   -- require telescope and load extensions as necessary
                   local telescope = require "telescope"
+                  local lga_actions = require "telescope-live-grep-args.actions"
+                  telescope.setup {
+                        extensions = {
+                              live_grep_args = {
+                                    mappings = {
+                                          i = {
+                                                ["<C-k>"] = lga_actions.quote_prompt(),
+                                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                          }
+                                    }
+                              },
+                              media_files = {
+                                    find_cmd = "rg"
+                              }
+                        }
+                  }
                   telescope.load_extension "media_files"
                   telescope.extensions.live_grep_args.live_grep_args()
             end,

@@ -18,6 +18,13 @@ return {
     --   desc = "Previous buffer",
     -- },
 
+    -- live grep args
+    ["<leader>fg"] = {
+      function ()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end
+    },
+
     -- trouble 
     ["<leader>xx"] = {
       function ()
