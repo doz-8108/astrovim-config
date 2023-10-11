@@ -18,6 +18,13 @@ return {
     --   desc = "Previous buffer",
     -- },
 
+    -- copy current path
+    ["<leader>cp"] = {
+      function ()
+       vim.cmd("let @* = @%")
+      end
+    },
+
     -- live grep args
     ["<leader>fg"] = {
       function ()
