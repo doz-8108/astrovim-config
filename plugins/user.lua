@@ -33,7 +33,7 @@ return {
                                           i = {
                                                 ["<C-k>"] = lga_actions.quote_prompt(),
                                                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                                                ["<C-l>"] = lga_actions.quote_prompt({ postfix = " -w -g '!*.test.{ts,tsx,js,jsx}'" }),
+                                                ["<C-l>"] = lga_actions.quote_prompt({ postfix = " -g '!*.test.{ts,tsx,js,jsx}' -w" }),
                                           }
                                     }
                               },
