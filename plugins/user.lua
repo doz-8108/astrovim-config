@@ -33,6 +33,7 @@ return {
                                           i = {
                                                 ["<C-k>"] = lga_actions.quote_prompt(),
                                                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                                ["<C-l>"] = lga_actions.quote_prompt({ postfix = " -w -g '!*.test.{ts,tsx,js,jsx}'" }),
                                           }
                                     }
                               },
@@ -106,5 +107,8 @@ return {
                         hide_gitignored = true
                   }
             end,
+      },
+      {
+            "github/copilot.vim"
       }
 }
