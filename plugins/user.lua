@@ -1,14 +1,4 @@
 return {
-      -- You can also add new plugins here as well:
-      -- Add plugins, the lazy syntax
-      -- "andweeb/presence.nvim",
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
       {
             "nvim-telescope/telescope.nvim",
             dependencies = {
@@ -27,6 +17,11 @@ return {
                   local telescope = require "telescope"
                   local lga_actions = require "telescope-live-grep-args.actions"
                   telescope.setup {
+                        defaults = {
+                          file_ignore_patterns = {
+                            "node_modules"
+                          }
+                        },
                         extensions = {
                               live_grep_args = {
                                     mappings = {
@@ -62,14 +57,6 @@ return {
                   require("lualine").setup({})
             end,
       },
-      -- {
-      --       'akinsho/git-conflict.nvim',
-      --       name = "git-conflict-resolver",
-      --       lazy = false,
-      --       config = function ()
-      --             require("git-conflict").setup({})
-      --       end
-      -- },
       {
             "jay-babu/mason-null-ls.nvim",
             opts = {
@@ -96,9 +83,6 @@ return {
             dependencies = { "nvim-tree/nvim-web-devicons" },
       },
       {
-            "sindrets/diffview.nvim"
-      },
-      {
             "nvim-neo-tree/neo-tree.nvim",
             opts = function(_, opts)
                   opts.filesystem.filtered_items = {
@@ -109,6 +93,9 @@ return {
             end,
       },
       {
-            "github/copilot.vim"
-      }
+            "github/copilot.vim",
+              config = function()
+                require("copilot").setup()
+              end,
+      },
 }
